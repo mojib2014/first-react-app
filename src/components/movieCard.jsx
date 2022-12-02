@@ -7,23 +7,16 @@ import { Button } from '../common/button';
   props { title: 'Black hawk', type: '', posterUrl: '', name: 'Mojib'}
  */
 
-export default function MovieCard({
-  title,
-  type,
-  posterUrl,
-  movieId,
-  handleGetMovieById,
-  setOpen,
-}) {
+export default function MovieCard({ movie, handleGetMovieById, setOpen }) {
   const handleClick = () => {
-    handleGetMovieById(movieId);
+    handleGetMovieById(movie.imdbID);
     setOpen(true);
   };
   return (
     <div className="movie-card col">
-      <img src={posterUrl} alt={title} />
+      <img src={movie?.Poster} alt={movie?.Title} />
       <div className="card-body">
-        <h3>{title}</h3>
+        <h3>{movie?.Title}</h3>
       </div>
 
       <Button

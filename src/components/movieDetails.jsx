@@ -11,6 +11,15 @@ export default function MovieDetails({ movie }) {
         <h2>{movie.title}</h2>
         <h3>Plot</h3>
         <p>{movie.Plot}</p>
+        <p>
+          <strong>Year:</strong> {movie.Year}
+        </p>
+        <p>
+          <strong>Type:</strong> {movie.Type}
+        </p>
+        <p>
+          <strong>imdbID:</strong> {movie.imdbID}
+        </p>
       </div>
     </div>
   );

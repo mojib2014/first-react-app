@@ -12,3 +12,15 @@ body {
 .box {
   border: 10px dotted red;
 }
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+}
+
+.search-form input,
+.search-form select {
+  width: 100% !important;
+}

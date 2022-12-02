@@ -31,10 +31,10 @@ function App() {
   async function getMovies() {
     setIsLoading(true);
     try {
-      const res = await getMoviesByName(searchTerm, type);
-      const { Search } = await res.json();
-      console.log(Search);
-      setMovies(Search);
+      const result = await getMoviesByName(searchTerm, type);
+      const res = await result.json();
+      console.log('result', res);
+      setMovies(res.Search);
       setIsLoading(false);
     } catch (err) {
       console.log('errorrrrrrr', err.message);
@@ -54,6 +54,7 @@ function App() {
       e.preventDefault();
       console.log('Search Term ', searchTerm);
       const result = await getMoviesByName(searchTerm, type);
+      console.log('result', result);
       const { Search } = await result.json();
       console.log('Search: ', Search);
 
