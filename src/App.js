@@ -23,7 +23,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState({});
   const [searchTerm, setSearchTerm] = useState('Batman');
-  const [type, setType] = useState('comedy');
+  const [type, setType] = useState('movie');
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(null);
@@ -31,7 +31,7 @@ function App() {
   async function getMovies() {
     setIsLoading(true);
     try {
-      const res = await getMoviesByName(searchTerm);
+      const res = await getMoviesByName(searchTerm, type);
       const { Search } = await res.json();
       console.log(Search);
       setMovies(Search);
