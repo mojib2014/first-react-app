@@ -1,0 +1,19 @@
+.box {
+  border: 2px solid black;
+}
+
+.boxLarge {
+  background-color: orange;
+  width: 300px;
+  height: 300px;
+}
+.boxMedium {
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+}
+.boxSmall {
+  background-color: green;
+  width: 100px;
+  height: 100px;
+}

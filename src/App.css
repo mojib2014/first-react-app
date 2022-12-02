@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  border: 10px dotted red;
+}
