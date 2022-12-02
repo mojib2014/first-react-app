@@ -1,4 +1,6 @@
 export function getMoviesByName(name, type) {
+  delete process.env.REACT_APP_API_KEY;
+  console.log(process.env.REACT_APP_API_KEY);
   return fetch(
     `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${name}&type=${type}`
   );
