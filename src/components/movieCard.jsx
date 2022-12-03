@@ -13,16 +13,15 @@ export default function MovieCard({ movie, handleGetMovieById, setOpen }) {
     setOpen(true);
   };
   return (
-    <div className="movie-card col">
+    <div className="text-center border rounded-end shadow-lg p-3 mb-5 bg-body rounded movie-card">
       <img src={movie?.Poster} alt={movie?.Title} />
-      <div className="card-body">
-        <h3>{movie?.Title}</h3>
+      <div className="text-center my-3">
+        <h4>{movie?.Title}</h4>
       </div>
 
       <Button
-        primary={true}
         onClick={handleClick}
-        className="btn btn-danger fs-1"
+        className="btn btn-danger p-1 text-center align-self-center"
       >
         Movie
       </Button>

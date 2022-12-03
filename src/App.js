@@ -27,13 +27,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
+  console.log('total pages', totalPages);
   async function getMovies() {
     setIsLoading(true);
     try {
-      const result = await getMoviesByName(searchTerm, type);
+      const result = await getMoviesByName(searchTerm, type, page);
       const res = await result.json();
       console.log('result', res);
+      setTotalPages(Math.ceil(res.totalResults / 5));
       setMovies(res.Search);
       setIsLoading(false);
     } catch (err) {
@@ -67,9 +71,10 @@ function App() {
     getMovies();
     // document.querySelector('input').addEventListener('click', () => {});
     return () => {};
-  }, []);
+  }, [page]);
 
   console.log(type);
+  const pageNumbers = Array.from({ length: 10 }, (_, i) => i + 1);
 
   return (
     <div className="App">
@@ -85,6 +90,31 @@ function App() {
       <Box className={styles.boxSmall}>Box Small</Box>
       <Clock date={new Date().toLocaleTimeString()} />
       <Greeting />
+      <div className="d-flex align-items-center justify-content-center">
+        <button
+          className="min-w-2 btn btn-primary"
+          onClick={() => setPage((page) => page - 1)}
+        >
+          Previous
+        </button>
+        {pageNumbers.map((p) => (
+          <span
+            role="button"
+            onClick={() => setPage(p)}
+            className={`mx-1 badge  ${
+              p === page ? 'text-bg-primary' : 'text-bg-secondary'
+            }`}
+          >
+            {p}
+          </span>
+        ))}
+        <button
+          onClick={() => setPage((page) => page + 1)}
+          className="min-w-2 btn btn-primary"
+        >
+          Next
+        </button>
+      </div>
       {isLoading ? (
         <h1>Loading...</h1>
       ) : error ? (
@@ -99,6 +129,31 @@ function App() {
           onSubmit={handleSubmit}
         />
       )}
+      <div className="d-flex align-items-center justify-content-center">
+        <button
+          className="min-w-2 btn btn-primary"
+          onClick={() => setPage((page) => page - 1)}
+        >
+          Previous
+        </button>
+        {pageNumbers.map((p) => (
+          <span
+            role="button"
+            onClick={() => setPage(p)}
+            className={`mx-1 badge  ${
+              p === page ? 'text-bg-primary' : 'text-bg-secondary'
+            }`}
+          >
+            {p}
+          </span>
+        ))}
+        <button
+          onClick={() => setPage((page) => page + 1)}
+          className="min-w-2 btn btn-primary"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
-  background-color: blue;
-  border: 1px solid blue;
+  border: 1px solid red;
   font-size: 20px;
   ${(props) =>
     props.primary &&

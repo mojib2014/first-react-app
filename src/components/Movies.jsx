@@ -10,9 +10,9 @@ function Movies({
 }) {
   return (
     <>
-      <div className="container h-auto mb-5">
+      <div className="container h-auto mb-5 mt-5">
         <form onSubmit={onSubmit} className="row">
-          <div className="col col-12 col-md-5">
+          <div className="col col-12 col-md-5 mb-3 mb-md-0 p-0 px-md-2">
             <input
               className="form-control p-3"
               id="exampleFormControlInput1"
@@ -22,7 +22,7 @@ function Movies({
               placeholder="Search for movies by Name, type, genre..."
             />
           </div>
-          <div className="col col-12 col-md-5">
+          <div className="col col-12 col-md-5 mb-3 mb-md-0 p-0 px-md-2">
             <select
               id="type"
               className="form-select p-3"
@@ -43,7 +43,7 @@ function Movies({
           </button>
         </form>
       </div>
-      <div className="movies row m-auto">
+      <div className="d-flex flex-wrap gap-2 align-items-stretch justify-content-center">
         {movies?.map((movie) => (
           <MovieCard
             key={movie.imdbID}

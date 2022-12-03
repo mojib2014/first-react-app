@@ -1,12 +1,5 @@
 body {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
+  background-color: white !important;
 }
 
 .box {
