@@ -6,7 +6,10 @@ class NavBar extends Component {
     return (
       <header>
         <nav>
-          <NavLink className={(isActive) => (isActive ? 'active' : '')} to="/">
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to="/"
+          >
             Home
           </NavLink>
           <NavLink to="/login">Login</NavLink>

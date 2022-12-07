@@ -16,7 +16,6 @@ import Pagination from './components/Pagination';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import { Routes, Route } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import NavBar from './components/navBar';
 
 // const Message = (props) => (
@@ -73,7 +72,7 @@ function App() {
     getMovies();
     // document.querySelector('input').addEventListener('click', () => {});
     return () => {};
-  }, [page]);
+  }, []);
 
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
   // Route parameter { params } => { movieId: 1}
