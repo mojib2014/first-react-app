@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import MovieCard from './movieCard';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-export default function MovieDetails({ movie }) {
+export default function MovieDetails({ movie, handleGetMovieById }) {
+  const params = useParams();
+  useEffect(() => {
+    handleGetMovieById(params.movieId);
+  }, [params.movieId]);
   return (
     <div className="movie-details row">
       <div className="col">

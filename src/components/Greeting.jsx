@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getMoviesByName, getMoviesById } from '../utils';
+import { getMoviesByName } from '../utils';
 
 export default function Greeting() {
   const [movies, setMovies] = useState([]);
@@ -20,9 +20,9 @@ export default function Greeting() {
 
   return (
     <div>
-      {/* {movies.map((movie) => (
+      {movies.map((movie) => (
         <h1 key={movie.imdbID}>{movie.title}</h1>
-      ))} */}
+      ))}
     </div>
   );
 }

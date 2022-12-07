@@ -17,3 +17,7 @@ body {
 .search-form select {
   width: 100% !important;
 }
+
+.active {
+  background-color: blue;
+}

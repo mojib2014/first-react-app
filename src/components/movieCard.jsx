@@ -1,4 +1,5 @@
 import './movieCard.css';
+import { Link } from 'react-router-dom';
 import { Button } from '../common/button';
 
 /**
@@ -16,15 +17,19 @@ export default function MovieCard({ movie, handleGetMovieById, setOpen }) {
     <div className="text-center border rounded-end shadow-lg p-3 mb-5 bg-body rounded movie-card">
       <img src={movie?.Poster} alt={movie?.Title} />
       <div className="text-center my-3">
-        <h4>{movie?.Title}</h4>
+        <h4>
+          {movie.Title.length > 20
+            ? `${movie.Title.slice(0, 24)}...`
+            : movie?.Title}
+        </h4>
       </div>
 
-      <Button
-        onClick={handleClick}
+      <Link
+        to={`/movies/${movie.imdbID}`}
         className="btn btn-danger p-1 text-center align-self-center"
       >
         Movie
-      </Button>
+      </Link>
     </div>
   );
 }
