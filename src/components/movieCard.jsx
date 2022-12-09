@@ -1,6 +1,6 @@
 import './movieCard.css';
 import { Link } from 'react-router-dom';
-import { Button } from '../common/button';
+// import { Button } from '../common/button';
 
 /**
   name: props 
@@ -9,10 +9,10 @@ import { Button } from '../common/button';
  */
 
 export default function MovieCard({ movie, handleGetMovieById, setOpen }) {
-  const handleClick = () => {
-    handleGetMovieById(movie.imdbID);
-    setOpen(true);
-  };
+  // const handleClick = () => {
+  //   handleGetMovieById(movie.imdbID);
+  //   setOpen(true);
+  // };
   return (
     <div className="text-center border rounded-end shadow-lg p-3 mb-5 bg-body rounded movie-card">
       <img src={movie?.Poster} alt={movie?.Title} />
@@ -34,6 +34,6 @@ export default function MovieCard({ movie, handleGetMovieById, setOpen }) {
   );
 }
 
-MovieCard.defaultProps = {
-  title: '',
-};
+// MovieCard.defaultProps = {
+//   title: '',
+// };

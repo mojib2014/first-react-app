@@ -12,11 +12,11 @@ import Modal from './components/Modal';
 // import { useRef } from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Pagination from './components/Pagination';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import NavBar from './components/navBar';
+import ProtectedRoute from './common/ProtectedRoute';
 
 // const Message = (props) => (
 //   <div>
@@ -68,18 +68,26 @@ function App() {
     [searchTerm, type]
   );
 
+  const nextPage = () => {
+    setPage((page) => page + 1);
+  };
+
+  const prevPage = () => {
+    setPage((page) => page - 1);
+  };
+
   useEffect(() => {
     getMovies();
     // document.querySelector('input').addEventListener('click', () => {});
     return () => {};
   }, []);
 
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+  // const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
   // Route parameter { params } => { movieId: 1}
+  console.log(page);
   return (
-    <div className="App mt-5">
+    <div className="App">
       <NavBar />
-      <Logout />
       <Routes>
         <Route path="/" element={<div>Home page</div>} />
         <Route path="/login" element={<Login />} />
@@ -93,16 +101,38 @@ function App() {
           }
         />
         <Route
+          path="/blog"
+          element={
+            <div>
+              Blog page <Outlet />
+            </div>
+          }
+        >
+          <Route
+            path="/blog/posts"
+            element={
+              <div>
+                <h1>Blog posts</h1>
+              </div>
+            }
+          />
+        </Route>
+        <Route
           path="/movies"
           element={
-            <Movies
-              handleGetMovieById={handleGetMovieById}
-              movies={movies}
-              setSearchTerm={setSearchTerm}
-              onTypeChange={setType}
-              setOpen={setOpen}
-              onSubmit={handleSubmit}
-            />
+            <ProtectedRoute>
+              <Movies
+                handleGetMovieById={handleGetMovieById}
+                movies={movies}
+                setSearchTerm={setSearchTerm}
+                onTypeChange={setType}
+                onSubmit={handleSubmit}
+                totalPages={totalPages}
+                page={page}
+                nextPage={nextPage}
+                prevPage={prevPage}
+              />
+            </ProtectedRoute>
           }
         />
       </Routes>
@@ -118,9 +148,6 @@ function App() {
       <Box className={styles.boxSmall}>Box Small</Box>
       <Clock date={new Date().toLocaleTimeString()} />
       <Greeting /> */}
-      <Pagination pageNumbers={pageNumbers} page={page} setPage={setPage} />
-
-      <Pagination pageNumbers={pageNumbers} page={page} setPage={setPage} />
     </div>
   );
 }

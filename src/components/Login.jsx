@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Login() {
   const { login } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.pathname || '/';
 
   function handleSubmit(e) {
     e.preventDefault();
     login(username, password);
+    navigate(from, { replace: true });
   }
 
   return (

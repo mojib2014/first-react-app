@@ -1,13 +1,17 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import MovieCard from './movieCard';
+import Pagination from './Pagination';
 
 function Movies({
   movies,
   setSearchTerm,
   onTypeChange,
+  totalPages,
+  page,
+  nextPage,
+  prevPage,
   handleGetMovieById,
-  setOpen,
   onSubmit,
 }) {
   const { isLoggedIn } = useContext(AuthContext);
@@ -48,13 +52,19 @@ function Movies({
               </button>
             </form>
           </div>
+          <Pagination
+            totalPages={totalPages}
+            page={page}
+            nextPage={nextPage}
+            prevPage={prevPage}
+          />
+
           <div className="d-flex flex-wrap gap-2 align-items-stretch justify-content-center">
             {movies?.map((movie) => (
               <MovieCard
                 key={movie.imdbID}
                 movie={movie}
                 handleGetMovieById={handleGetMovieById}
-                setOpen={setOpen}
               />
             ))}
           </div>
@@ -62,6 +72,12 @@ function Movies({
       ) : (
         <h1>Please login to view the movies</h1>
       )}
+      <Pagination
+        totalPages={totalPages}
+        page={page}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
     </>
   );
 }

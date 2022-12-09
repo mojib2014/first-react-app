@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function MovieDetails({ movie, handleGetMovieById }) {
-  const params = useParams();
+  const { movieId } = useParams();
   useEffect(() => {
-    handleGetMovieById(params.movieId);
-  }, [params.movieId]);
+    handleGetMovieById(movieId);
+  }, []);
   return (
     <div className="movie-details row">
       <div className="col">

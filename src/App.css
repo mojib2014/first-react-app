@@ -19,5 +19,30 @@ body {
 }
 
 .active {
-  background-color: blue;
+  background-color: dodgerblue;
+  border: 2px solid dodgerblue;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+header {
+  background-color: #f9f9f9;
+  width: 100%;
+  padding: 8px 0;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  margin-right: 8px;
+  padding: 3px;
+}
+
+.pending {
+  color: red;
 }
